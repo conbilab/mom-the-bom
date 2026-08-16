@@ -209,7 +209,7 @@
   };
 
   const header = document.querySelector("[data-header]");
-  const hero = document.querySelector(".hero");
+  const hero = document.querySelector(".hero, .product-hero");
   const drawer = document.querySelector("[data-drawer]");
   const drawerPanel = document.querySelector(".mobile-drawer");
   const menuButton = document.querySelector("[data-menu-open]");
@@ -229,8 +229,10 @@
     currentLanguage = language;
     const dictionary = copy[language];
     document.documentElement.lang = language;
-    document.title = dictionary.page_title;
-    document.querySelector('meta[name="description"]')?.setAttribute("content", dictionary.page_description);
+    const pageTitle = language === "ko" ? document.body.dataset.pageTitleKo : document.body.dataset.pageTitleEn;
+    const pageDescription = language === "ko" ? document.body.dataset.pageDescriptionKo : document.body.dataset.pageDescriptionEn;
+    document.title = pageTitle || dictionary.page_title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", pageDescription || dictionary.page_description);
 
     document.querySelectorAll("[data-i18n]").forEach((element) => {
       const key = element.dataset.i18n;
