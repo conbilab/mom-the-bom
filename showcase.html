@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>몸 더봄 디자인 시스템 쇼케이스</title>
+    <meta name="description" content="몸 더봄 홈페이지의 타이포그래피, 컬러, 버튼, 폼, 이미지, 인터랙션 규칙 쇼케이스.">
+    <link rel="stylesheet" href="styles.css?v=20260816f">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 바로가기</a>
+    <main id="main" class="showcase">
+      <div class="container">
+        <header class="showcase-header">
+          <div>
+            <p class="eyebrow">MOM THE BOM / DESIGN SYSTEM</p>
+            <h1 class="display-lg">몸을 더 바라보는<br>조용한 기준</h1>
+          </div>
+          <p class="body-sm text-stone">Soft Structuralism + Product Editorial<br>Version 1.0 / 2026</p>
+        </header>
+
+        <section class="showcase-section showcase-grid" aria-labelledby="type-title">
+          <div class="showcase-aside">
+            <p class="eyebrow">01 / TYPOGRAPHY</p>
+            <h2 id="type-title" class="display-sm">말보다 먼저<br>태도를 보여줍니다.</h2>
+          </div>
+          <div class="showcase-main">
+            <p class="display-xl">몸 더봄</p>
+            <p class="display-md">몸을 더 바라볼수록,<br>삶은 더 좋아집니다.</p>
+            <p class="body-lg text-stone">매일의 먹는 것, 움직임, 마음, 그리고 몸에 닿는 것. 몸 더봄은 작은 관찰이 더 나은 생활의 기준이 된다고 믿습니다.</p>
+          </div>
+        </section>
+
+        <section class="showcase-section" aria-labelledby="color-title">
+          <p class="eyebrow">02 / COLOR</p>
+          <h2 id="color-title" class="display-sm">Porcelain, Ink, Pine, Amber</h2>
+          <div class="swatches">
+            <div class="swatch swatch-ink">INK<br>#101712</div>
+            <div class="swatch swatch-pine">PINE<br>#123B2D</div>
+            <div class="swatch swatch-paper">PAPER<br>#F4F4EF</div>
+            <div class="swatch swatch-amber">AMBER<br>#B87923</div>
+          </div>
+        </section>
+
+        <section class="showcase-section showcase-grid" aria-labelledby="action-title">
+          <div class="showcase-aside">
+            <p class="eyebrow">03 / ACTIONS</p>
+            <h2 id="action-title" class="display-sm">하나의 화면,<br>하나의 주 행동</h2>
+          </div>
+          <div class="showcase-main">
+            <div class="showcase-actions">
+              <a class="button button-primary" href="#form">파트너십 제안 <span class="button-arrow" aria-hidden="true">→</span></a>
+              <button class="button button-outline" type="button">브랜드 보기</button>
+              <button class="button button-primary" type="button" disabled>연결 중</button>
+              <a class="text-link" href="#media">첫 제품 만나기 <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase-section" aria-labelledby="observation-title">
+          <p class="eyebrow">04 / DISCLOSURE</p>
+          <h2 id="observation-title" class="display-sm">몸 더봄의 네 가지 관찰</h2>
+          <details class="observation" open>
+            <summary>
+              <span class="observation-number">01</span>
+              <span class="observation-title">움직임</span>
+              <span class="observation-intro">몸이 보내는 작은 신호를 놓치지 않는 일.</span>
+              <span class="observation-toggle" aria-hidden="true">+</span>
+            </summary>
+            <p class="observation-detail">기록과 강요보다 오늘 가능한 움직임을 발견합니다. 생활 속 루틴이 오래 이어지는 방식을 먼저 봅니다.</p>
+          </details>
+          <details class="observation">
+            <summary>
+              <span class="observation-number">02</span>
+              <span class="observation-title">영양</span>
+              <span class="observation-intro">먹는 것을 숫자가 아닌 생활로 바라보는 일.</span>
+              <span class="observation-toggle" aria-hidden="true">+</span>
+            </summary>
+            <p class="observation-detail">유행하는 한 가지 답보다 몸과 계절, 식탁의 리듬을 관찰합니다.</p>
+          </details>
+        </section>
+
+        <section id="media" class="showcase-section showcase-grid" aria-labelledby="media-title">
+          <div class="showcase-main image-frame showcase-media">
+            <img src="assets/hero-morning.webp" width="1672" height="941" alt="밝은 아침 공간에 놓인 몸 더봄의 첫 샴푸 제품">
+          </div>
+          <div class="showcase-aside">
+            <p class="eyebrow">05 / IMAGE</p>
+            <h2 id="media-title" class="display-sm">이미지가 설명보다 먼저 말합니다.</h2>
+            <p class="body-md text-stone">사람의 생활, 제품의 재료감, 조용한 빛. 원료 장식보다 실제로 쓰이는 장면을 우선합니다.</p>
+          </div>
+        </section>
+
+        <section id="form" class="showcase-section showcase-grid" aria-labelledby="form-title">
+          <div class="showcase-aside">
+            <p class="eyebrow">06 / FORM</p>
+            <h2 id="form-title" class="display-sm">제안은 간결하고<br>분명하게 받습니다.</h2>
+          </div>
+          <form class="showcase-main showcase-grid" novalidate>
+            <div class="field col-6">
+              <label for="sample-company">회사명</label>
+              <input id="sample-company" name="company" autocomplete="organization" placeholder="회사명을 입력해 주세요">
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field col-6">
+              <label for="sample-email">이메일</label>
+              <input id="sample-email" name="email" type="email" autocomplete="email" placeholder="name@company.com">
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field col-full">
+              <label for="sample-message">제안 내용</label>
+              <textarea id="sample-message" name="message" placeholder="협업 형태와 시장을 간단히 알려주세요"></textarea>
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

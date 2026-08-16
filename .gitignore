@@ -1,0 +1,7 @@
+.vercel/
+.omo/
+qa-evidence/
+assets/*.png
+assets/*.jpg
+Thumbs.db
+.DS_Store
