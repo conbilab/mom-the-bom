@@ -148,6 +148,11 @@ button {
   white-space: nowrap;
 }
 
+.origin-quote-line {
+  display: inline;
+  white-space: normal;
+}
+
 .display-xl {
   font-size: 80px;
   line-height: 1.12;
@@ -2208,11 +2213,6 @@ html[lang="en"] .lang-en {
 
   .origin-grid {
     gap: 48px;
-  }
-
-  .origin-quote-line {
-    display: inline;
-    white-space: normal;
   }
 
   .origin-media {
