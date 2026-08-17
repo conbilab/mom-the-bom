@@ -2210,6 +2210,11 @@ html[lang="en"] .lang-en {
     gap: 48px;
   }
 
+  .origin-quote-line {
+    display: inline;
+    white-space: normal;
+  }
+
   .origin-media {
     aspect-ratio: 4 / 5;
   }
