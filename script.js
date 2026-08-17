@@ -103,7 +103,14 @@
       form_required: "필수 항목을 입력해 주세요.",
       form_email_error: "올바른 이메일 형식으로 입력해 주세요.",
       footer_statement: "몸을 더 바라보고,<br>삶을 더 잘 돌봅니다.",
-      footer_note: "KOREAN WELLNESS BRAND · WEBSITE CONCEPT V1.0"
+      footer_note: "KOREAN WELLNESS BRAND · WEBSITE CONCEPT V1.0",
+      business_title: "사업자 정보",
+      business_name: "상호",
+      business_representative: "대표자",
+      business_registration: "사업자등록번호",
+      business_address: "사업장 주소",
+      business_phone: "전화",
+      business_email: "이메일"
     },
     en: {
       page_title: "MOM THE BOM | A Korean Wellness Brand",
@@ -206,7 +213,14 @@
       form_required: "Please complete this required field.",
       form_email_error: "Please enter a valid email address.",
       footer_statement: "Look more closely at the body.<br>Care more thoughtfully for life.",
-      footer_note: "KOREAN WELLNESS BRAND · WEBSITE CONCEPT V1.0"
+      footer_note: "KOREAN WELLNESS BRAND · WEBSITE CONCEPT V1.0",
+      business_title: "Business information",
+      business_name: "Business",
+      business_representative: "Representative",
+      business_registration: "Business registration no.",
+      business_address: "Business address",
+      business_phone: "Phone",
+      business_email: "Email"
     }
   };
 

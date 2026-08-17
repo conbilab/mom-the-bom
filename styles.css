@@ -1126,15 +1126,59 @@ html[lang="en"] .lang-en {
   font-size: 10px;
 }
 
-.footer-phone {
+.footer-business {
+  padding: 24px 0;
+  border-top: 1px solid var(--white-faint);
+}
+
+.footer-business-title {
+  margin: 0;
+  color: var(--white-soft);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-business-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 32px;
+  margin: 16px 0 0;
+}
+
+.footer-business-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.footer-business-item dt {
+  color: var(--white-soft);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.footer-business-item dd {
+  min-width: 0;
+  margin: 0;
   color: var(--porcelain);
   font-size: 11px;
-  font-weight: 600;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.footer-business-item a {
   transition: color 220ms var(--ease-out);
 }
 
-.footer-phone:hover {
+.footer-business-item a:hover {
   color: var(--amber);
+}
+
+.footer-business-address {
+  grid-column: span 2;
 }
 
 .observation {
@@ -2216,6 +2260,14 @@ html[lang="en"] .lang-en {
 
   .site-footer nav {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-business-list {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-business-address {
+    grid-column: auto;
   }
 
   .footer-bottom {
