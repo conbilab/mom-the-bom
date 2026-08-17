@@ -1048,6 +1048,10 @@ html[lang="en"] .lang-en {
   margin-top: 32px;
 }
 
+.contact-phone {
+  margin-top: 28px;
+}
+
 .inquiry-form {
   display: grid;
   grid-column: 6 / -1;
@@ -1120,6 +1124,17 @@ html[lang="en"] .lang-en {
   margin: 0;
   color: var(--white-soft);
   font-size: 10px;
+}
+
+.footer-phone {
+  color: var(--porcelain);
+  font-size: 11px;
+  font-weight: 600;
+  transition: color 220ms var(--ease-out);
+}
+
+.footer-phone:hover {
+  color: var(--amber);
 }
 
 .observation {
