@@ -5,8 +5,10 @@
 ## Structure
 
 - `index.html`: 브랜드 홈페이지
+- `product.html`: 모앤봄 산야초 샴푸 상세 페이지
+- `review.html`: 고객 후기 작성 페이지
 - `styles.css`: 반응형 디자인 시스템
-- `script.js`: 메뉴, 언어 전환, 아코디언, 문의 폼 상태
+- `script.js`: 메뉴, 언어 전환, 아코디언, 문의·후기 폼 전송
 - `assets/`: 운영용 WebP 이미지
 - `DESIGN.md`: 브랜드 및 웹 디자인 기준
 - `showcase.html`: 디자인 시스템 쇼케이스
@@ -17,4 +19,6 @@
 python -m http.server 4173
 ```
 
-문의 폼은 현재 브라우저 세션에만 임시 저장되는 프로토타입이며 실제 수신 채널은 별도로 연결해야 합니다.
+문의와 후기는 FormSubmit을 통해 `momthebom@naver.com`으로 전송됩니다. 최초 제출 뒤 수신함에 도착하는 FormSubmit 활성화 메일을 한 번 승인해야 실제 메일 전달이 시작됩니다.
+
+제품 후기 QR은 `https://mom-the-bom.vercel.app/review`로 연결됩니다. 배포 도메인을 바꾸면 `assets/review-qr.png`도 새 주소로 다시 생성해야 합니다.

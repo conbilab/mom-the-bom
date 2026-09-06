@@ -2,6 +2,7 @@
 .omo/
 qa-evidence/
 assets/*.png
+!assets/review-qr.png
 assets/*.jpg
 Thumbs.db
 .DS_Store

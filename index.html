@@ -12,9 +12,9 @@
     <meta property="og:image" content="assets/hero-morning.webp">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" as="image" href="assets/hero-morning.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260816m">
+    <link rel="stylesheet" href="styles.css?v=20260907a">
     <script>document.documentElement.classList.add("js")</script>
-    <script src="script.js?v=20260816o" defer></script>
+    <script src="script.js?v=20260907a" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">본문으로 바로가기</a>
@@ -232,7 +232,11 @@
               <span class="button-arrow" aria-hidden="true">→</span>
             </a>
           </div>
-          <form class="inquiry-form reveal" action="" method="post" data-inquiry-form novalidate>
+          <form class="inquiry-form reveal" action="https://formsubmit.co/ajax/momthebom@naver.com" method="post" data-inquiry-form data-form-mode="inquiry" novalidate>
+            <input type="hidden" name="_subject" value="[몸 더 봄] 새로운 파트너십 문의">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="form-row">
               <div class="field">
                 <label for="company" data-i18n="form_company">회사명 *</label>
@@ -269,9 +273,9 @@
               <p id="message-error" class="field-error" data-error-for="message" aria-live="polite"></p>
             </div>
             <div class="form-submit">
-              <p class="form-status" data-form-status role="status" aria-live="polite" data-i18n="form_draft">현재 시안에서는 작성 내용이 이 브라우저 세션에만 임시 저장됩니다.</p>
+              <p class="form-status" data-form-status role="status" aria-live="polite" data-i18n="form_ready">입력하신 내용은 몸더봄컴퍼니 이메일로 전달됩니다.</p>
               <button class="button button-primary" type="submit" data-submit-button disabled>
-                <span data-submit-label data-i18n="form_submit">제안 내용 임시 저장</span>
+                <span data-submit-label data-i18n="form_submit">문의 보내기</span>
                 <span class="button-arrow" aria-hidden="true">→</span>
               </button>
             </div>
@@ -308,6 +312,10 @@
           <div class="footer-business-item">
             <dt data-i18n="business_registration">사업자등록번호</dt>
             <dd>405-09-36540</dd>
+          </div>
+          <div class="footer-business-item">
+            <dt data-i18n="business_mail_order">통신판매업 신고번호</dt>
+            <dd>제2025-경기과천-0205호</dd>
           </div>
           <div class="footer-business-item footer-business-address">
             <dt data-i18n="business_address">사업장 주소</dt>

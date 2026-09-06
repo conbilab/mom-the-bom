@@ -95,11 +95,30 @@
       form_market_other: "기타",
       form_message: "제안 내용 *",
       form_message_placeholder: "협업 형태와 시장을 간단히 알려주세요",
-      form_draft: "현재 시안에서는 작성 내용이 이 브라우저 세션에만 임시 저장됩니다.",
-      form_submit: "제안 내용 임시 저장",
-      form_saving: "확인 중...",
-      form_saved: "임시 저장 완료",
-      form_success: "작성 내용이 이 브라우저 세션에 임시 저장되었습니다. 실제 문의 수신 채널은 최종 홈페이지에서 연결합니다.",
+      form_ready: "입력하신 내용은 몸더봄컴퍼니 이메일로 전달됩니다.",
+      form_submit: "문의 보내기",
+      form_sending: "보내는 중...",
+      form_sent: "문의 전송 완료",
+      form_success: "문의가 전송되었습니다. 확인 후 연락드리겠습니다.",
+      form_error: "전송하지 못했습니다. 잠시 후 다시 시도하거나 전화로 연락해 주세요.",
+      review_form_ready: "작성하신 후기는 몸 더 봄 공식 이메일로 전달됩니다.",
+      review_form_submit: "후기 보내기",
+      review_form_sending: "보내는 중...",
+      review_form_sent: "후기 전송 완료",
+      review_form_success: "소중한 후기를 보내주셔서 감사합니다.",
+      review_form_error: "후기를 전송하지 못했습니다. 잠시 후 다시 시도해 주세요.",
+      review_name_placeholder: "이름 또는 닉네임",
+      review_message_placeholder: "향, 사용감, 생활 속 변화 등 솔직한 경험을 들려주세요.",
+      review_select: "선택해 주세요",
+      review_rating_5: "5 / 5 · 매우 만족",
+      review_rating_4: "4 / 5 · 만족",
+      review_rating_3: "3 / 5 · 보통",
+      review_rating_2: "2 / 5 · 아쉬움",
+      review_rating_1: "1 / 5 · 불만족",
+      review_channel_gift: "선물",
+      review_channel_online: "온라인 구매",
+      review_channel_offline: "오프라인 구매",
+      review_channel_other: "기타",
       form_required: "필수 항목을 입력해 주세요.",
       form_email_error: "올바른 이메일 형식으로 입력해 주세요.",
       footer_statement: "몸을 더 바라보고,<br>삶을 더 잘 돌봅니다.",
@@ -108,6 +127,7 @@
       business_name: "상호",
       business_representative: "대표자",
       business_registration: "사업자등록번호",
+      business_mail_order: "통신판매업 신고번호",
       business_address: "사업장 주소",
       business_phone: "전화",
       business_email: "이메일"
@@ -205,11 +225,30 @@
       form_market_other: "Other",
       form_message: "Proposal *",
       form_message_placeholder: "Tell us briefly about the market and partnership you have in mind",
-      form_draft: "In this concept site, your draft is stored only in this browser session.",
-      form_submit: "Save proposal draft",
-      form_saving: "Checking...",
-      form_saved: "Draft saved",
-      form_success: "Your draft is stored in this browser session. The live inquiry channel will be connected in the final website.",
+      form_ready: "Your message will be delivered to the MOM THE BOM team.",
+      form_submit: "Send inquiry",
+      form_sending: "Sending...",
+      form_sent: "Inquiry sent",
+      form_success: "Your inquiry has been sent. We will follow up after review.",
+      form_error: "We could not send your inquiry. Please try again or call us.",
+      review_form_ready: "Your review will be delivered to the MOM THE BOM team.",
+      review_form_submit: "Send review",
+      review_form_sending: "Sending...",
+      review_form_sent: "Review sent",
+      review_form_success: "Thank you for sharing your experience.",
+      review_form_error: "We could not send your review. Please try again.",
+      review_name_placeholder: "Name or nickname",
+      review_message_placeholder: "Tell us honestly about scent, feel and your everyday experience.",
+      review_select: "Please select",
+      review_rating_5: "5 / 5 · Very satisfied",
+      review_rating_4: "4 / 5 · Satisfied",
+      review_rating_3: "3 / 5 · Neutral",
+      review_rating_2: "2 / 5 · Disappointed",
+      review_rating_1: "1 / 5 · Dissatisfied",
+      review_channel_gift: "Gift",
+      review_channel_online: "Online purchase",
+      review_channel_offline: "In-store purchase",
+      review_channel_other: "Other",
       form_required: "Please complete this required field.",
       form_email_error: "Please enter a valid email address.",
       footer_statement: "Look more closely at the body.<br>Care more thoughtfully for life.",
@@ -218,6 +257,7 @@
       business_name: "Business",
       business_representative: "Representative",
       business_registration: "Business registration no.",
+      business_mail_order: "Mail-order business registration",
       business_address: "Business address",
       business_phone: "Phone",
       business_email: "Email"
@@ -225,7 +265,7 @@
   };
 
   const header = document.querySelector("[data-header]");
-  const hero = document.querySelector(".hero, .product-hero");
+  const hero = document.querySelector(".hero, .product-hero, .review-hero");
   const drawer = document.querySelector("[data-drawer]");
   const drawerPanel = document.querySelector(".mobile-drawer");
   const menuButton = document.querySelector("[data-menu-open]");
@@ -235,11 +275,46 @@
   const status = document.querySelector("[data-form-status]");
   const submitButton = document.querySelector("[data-submit-button]");
   const submitLabel = document.querySelector("[data-submit-label]");
+  const formMode = form?.dataset.formMode === "review" ? "review" : "inquiry";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let currentLanguage = localStorage.getItem("momthebom-language") === "en" ? "en" : "ko";
   let submitState = "idle";
   let lastFocusedElement = null;
   let saveTimer = 0;
+
+  const getFormMessages = (dictionary) => formMode === "review"
+    ? {
+        ready: dictionary.review_form_ready,
+        submit: dictionary.review_form_submit,
+        sending: dictionary.review_form_sending,
+        sent: dictionary.review_form_sent,
+        success: dictionary.review_form_success,
+        error: dictionary.review_form_error
+      }
+    : {
+        ready: dictionary.form_ready,
+        submit: dictionary.form_submit,
+        sending: dictionary.form_sending,
+        sent: dictionary.form_sent,
+        success: dictionary.form_success,
+        error: dictionary.form_error
+      };
+
+  const updateFormState = (dictionary) => {
+    if (!form || !status || !submitButton || !submitLabel) return;
+    const messages = getFormMessages(dictionary);
+    status.textContent = submitState === "sent"
+      ? messages.success
+      : submitState === "error"
+        ? messages.error
+        : messages.ready;
+    submitLabel.textContent = submitState === "sending"
+      ? messages.sending
+      : submitState === "sent"
+        ? messages.sent
+        : messages.submit;
+    submitButton.disabled = submitState === "sending";
+  };
 
   const setLanguage = (language) => {
     currentLanguage = language;
@@ -281,15 +356,7 @@
       button.setAttribute("aria-label", language === "ko" ? "영문으로 보기" : "View in Korean");
     });
 
-    if (submitState === "idle" && status) status.textContent = dictionary.form_draft;
-    if (submitState === "saved" && status) status.textContent = dictionary.form_success;
-    if (submitLabel) {
-      submitLabel.textContent = submitState === "saving"
-        ? dictionary.form_saving
-        : submitState === "saved"
-          ? dictionary.form_saved
-          : dictionary.form_submit;
-    }
+    updateFormState(dictionary);
 
     localStorage.setItem("momthebom-language", language);
   };
@@ -369,10 +436,10 @@
     document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
   }
 
-  const draftKey = "momthebom-partner-draft";
+  const draftKey = `momthebom-${formMode}-draft`;
   const saveDraft = () => {
     if (!form) return;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data = Object.fromEntries([...new FormData(form).entries()].filter(([name]) => !name.startsWith("_")));
     sessionStorage.setItem(draftKey, JSON.stringify(data));
   };
 
@@ -392,11 +459,15 @@
     }
 
     form.addEventListener("input", () => {
+      if (submitState === "sent" || submitState === "error") {
+        submitState = "idle";
+        updateFormState(copy[currentLanguage]);
+      }
       window.clearTimeout(saveTimer);
       saveTimer = window.setTimeout(saveDraft, 250);
     });
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const dictionary = copy[currentLanguage];
       let firstInvalid = null;
@@ -417,17 +488,30 @@
         return;
       }
 
-      submitState = "saving";
-      submitButton.disabled = true;
-      submitLabel.textContent = dictionary.form_saving;
-      status.textContent = dictionary.form_draft;
-      window.setTimeout(() => {
-        saveDraft();
-        submitState = "saved";
-        submitButton.disabled = false;
-        submitLabel.textContent = dictionary.form_saved;
-        status.textContent = dictionary.form_success;
-      }, reduceMotion.matches ? 0 : 450);
+      submitState = "sending";
+      updateFormState(dictionary);
+
+      const payload = new FormData(form);
+      payload.set("_url", window.location.href);
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: {
+            Accept: "application/json"
+          },
+          body: payload
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.success === false || result.success === "false") throw new Error("Submission failed");
+        form.reset();
+        sessionStorage.removeItem(draftKey);
+        submitState = "sent";
+      } catch {
+        submitState = "error";
+      }
+
+      updateFormState(dictionary);
     });
 
     submitButton.disabled = false;
