@@ -697,6 +697,24 @@ html[lang="en"] .lang-en {
   margin-top: 36px;
 }
 
+.product-review-shortcut {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--white-soft);
+  color: var(--porcelain);
+  font-size: 14px;
+  font-weight: 600;
+  transition: border-color 220ms var(--ease-out), color 220ms var(--ease-out);
+}
+
+.product-review-shortcut:hover {
+  border-color: var(--focus);
+  color: var(--focus);
+}
+
 .hero-scroll {
   position: absolute;
   right: 32px;
@@ -1702,6 +1720,13 @@ html[lang="en"] .lang-en {
   padding-left: 4px;
 }
 
+.product-review {
+  padding: 128px 0;
+  background: var(--pine);
+  color: var(--porcelain);
+  scroll-margin-top: 88px;
+}
+
 .product-review-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1716,6 +1741,18 @@ html[lang="en"] .lang-en {
 .product-review-copy > .body-lg {
   max-width: 600px;
   margin: 28px 0 32px;
+  color: var(--white-soft);
+}
+
+.product-review-button {
+  min-width: 220px;
+}
+
+.review-device-guide {
+  max-width: 520px;
+  margin: 20px 0 0;
+  color: var(--white-soft);
+  font-size: 12px;
 }
 
 .review-qr {
@@ -1744,6 +1781,14 @@ html[lang="en"] .lang-en {
   color: var(--stone);
   font-size: 11px;
   font-weight: 600;
+  text-align: center;
+}
+
+.review-qr strong {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .review-hero {
@@ -2047,6 +2092,10 @@ html[lang="en"] .lang-en {
     width: 100%;
     max-width: 440px;
     justify-self: start;
+  }
+
+  .product-review {
+    padding: 96px 0;
   }
 
   .review-form {
@@ -2478,6 +2527,12 @@ html[lang="en"] .lang-en {
     max-width: 284px;
   }
 
+  .product-review-shortcut {
+    width: 100%;
+    justify-content: space-between;
+    padding-inline: 4px;
+  }
+
   .product-hero-facts {
     margin-bottom: 20px;
   }
@@ -2616,6 +2671,10 @@ html[lang="en"] .lang-en {
 
   .review-qr {
     padding: 24px;
+  }
+
+  .product-review {
+    padding: 80px 0;
   }
 }
 

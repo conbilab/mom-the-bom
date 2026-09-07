@@ -14,7 +14,7 @@
     <meta property="og:image" content="assets/product-water.webp">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" as="image" href="assets/product-water.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260907a">
+    <link rel="stylesheet" href="styles.css?v=20260907b">
     <script>document.documentElement.classList.add("js")</script>
     <script src="script.js?v=20260907a" defer></script>
     <script type="application/ld+json">
@@ -129,6 +129,11 @@
               <span class="lang-ko">제품 기준 살펴보기</span>
               <span class="lang-en">Explore the product standard</span>
               <span class="button-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="product-review-shortcut" href="#review">
+              <span class="lang-ko">제품 후기 남기기</span>
+              <span class="lang-en">Write a product review</span>
+              <span aria-hidden="true">↓</span>
             </a>
           </div>
         </div>
@@ -314,27 +319,32 @@
         </div>
       </section>
 
-      <section id="review" class="product-review section-light" aria-labelledby="review-title">
+      <section id="review" class="product-review" aria-labelledby="review-title">
         <div class="container product-review-grid">
           <div class="product-review-copy reveal">
-            <p class="eyebrow">YOUR EXPERIENCE</p>
+            <p class="eyebrow eyebrow-light">YOUR EXPERIENCE</p>
             <h2 id="review-title" class="display-md">
-              <span class="lang-ko">써본 오늘을<br>들려주세요.</span>
-              <span class="lang-en">Tell us about<br>your everyday ritual.</span>
+              <span class="lang-ko">제품을 사용해보셨나요?<br>당신의 경험을 들려주세요.</span>
+              <span class="lang-en">Have you tried the product?<br>Share your experience.</span>
             </h2>
-            <p class="body-lg text-stone">
+            <p class="body-lg">
               <span class="lang-ko">작은 사용감부터 달라진 생활의 순간까지, 솔직한 이야기가 다음 제품의 기준이 됩니다.</span>
               <span class="lang-en">From a small sensory detail to a change in your routine, honest experiences help shape our next standard.</span>
             </p>
-            <a class="button button-primary" href="review.html">
-              <span class="lang-ko">후기 남기기</span>
-              <span class="lang-en">Write a review</span>
+            <a class="button button-light product-review-button" href="review.html">
+              <span class="lang-ko">지금 후기 남기기</span>
+              <span class="lang-en">Write a review now</span>
               <span class="button-arrow" aria-hidden="true">→</span>
             </a>
+            <p class="review-device-guide">
+              <span class="lang-ko">모바일에서는 버튼을 누르고, PC에서는 오른쪽 QR을 휴대전화로 스캔하세요.</span>
+              <span class="lang-en">Tap the button on mobile, or scan the QR code with your phone on desktop.</span>
+            </p>
           </div>
           <a class="review-qr reveal" href="review.html" aria-label="모앤봄 산야초 샴푸 후기 작성 페이지 열기" data-i18n-label="review_qr_label">
             <img src="assets/review-qr.png" width="320" height="320" alt="모앤봄 산야초 샴푸 후기 작성 QR 코드" data-i18n-alt="review_qr_alt" loading="lazy">
-            <span>SCAN TO REVIEW</span>
+            <strong><span class="lang-ko">휴대전화로 스캔해 주세요</span><span class="lang-en">SCAN WITH YOUR PHONE</span></strong>
+            <span><span class="lang-ko">후기 작성 페이지로 바로 연결됩니다</span><span class="lang-en">Go directly to the review page</span></span>
           </a>
         </div>
       </section>
