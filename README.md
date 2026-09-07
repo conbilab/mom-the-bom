@@ -21,4 +21,4 @@ python -m http.server 4173
 
 문의와 후기는 FormSubmit을 통해 `momthebom@naver.com`으로 전송됩니다. 최초 제출 뒤 수신함에 도착하는 FormSubmit 활성화 메일을 한 번 승인해야 실제 메일 전달이 시작됩니다.
 
-제품 후기 QR은 `https://mom-the-bom.vercel.app/review`로 연결됩니다. 배포 도메인을 바꾸면 `assets/review-qr.png`도 새 주소로 다시 생성해야 합니다.
+제품 후기 QR은 `https://www.momthebom.com/review`로 연결됩니다. 배포 도메인을 바꾸면 `assets/review-qr.png`도 새 주소로 다시 생성해야 합니다.
