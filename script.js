@@ -110,6 +110,16 @@
       review_form_sent: "후기 전송 완료",
       review_form_success: "소중한 후기를 보내주셔서 감사합니다.",
       review_form_error: "후기를 전송하지 못했습니다. 잠시 후 다시 시도해 주세요.",
+      review_receipt_kicker: "YOUR NOTE, RECEIVED",
+      review_receipt_title: "당신의 오늘이<br>잘 도착했습니다.",
+      review_receipt_intro: "남겨주신 이야기를 오래 읽고, 다음 기준에 세심하게 담겠습니다.",
+      review_receipt_product: "사용한 제품",
+      review_receipt_writer: "작성자",
+      review_receipt_date: "도착한 날",
+      review_receipt_permission_yes: "홈페이지·SNS 소개에 동의해 주셨어요. 실제 게시는 몸 더 봄이 검토한 뒤 진행합니다.",
+      review_receipt_permission_no: "후기는 공식 이메일로 전달되었으며, 별도 동의 없이 홈페이지나 SNS에 공개되지 않습니다.",
+      review_receipt_shop: "제품 보러가기",
+      review_receipt_home: "홈으로 돌아가기",
       review_name_placeholder: "이름 또는 닉네임",
       review_message_placeholder: "향, 사용감, 생활 속 변화 등 솔직한 경험을 들려주세요.",
       review_select: "선택해 주세요",
@@ -248,6 +258,16 @@
       review_form_sent: "Review sent",
       review_form_success: "Thank you for sharing your experience.",
       review_form_error: "We could not send your review. Please try again.",
+      review_receipt_kicker: "YOUR NOTE, RECEIVED",
+      review_receipt_title: "Your everyday story<br>has arrived safely.",
+      review_receipt_intro: "We will read it closely and carry it thoughtfully into what comes next.",
+      review_receipt_product: "Product used",
+      review_receipt_writer: "Written by",
+      review_receipt_date: "Received on",
+      review_receipt_permission_yes: "You agreed that we may feature this review. MOM THE BOM will still review it before publishing.",
+      review_receipt_permission_no: "Your review was delivered by email and will not be published on our website or social channels without permission.",
+      review_receipt_shop: "Explore products",
+      review_receipt_home: "Return home",
       review_name_placeholder: "Name or nickname",
       review_message_placeholder: "Tell us honestly about scent, feel and your everyday experience.",
       review_select: "Please select",
@@ -291,10 +311,20 @@
   const status = document.querySelector("[data-form-status]");
   const submitButton = document.querySelector("[data-submit-button]");
   const submitLabel = document.querySelector("[data-submit-label]");
+  const reviewReceipt = document.querySelector("[data-review-receipt]");
+  const receiptRating = document.querySelector("[data-review-receipt-rating]");
+  const receiptStars = document.querySelector("[data-review-receipt-stars]");
+  const receiptScore = document.querySelector("[data-review-receipt-score]");
+  const receiptMessage = document.querySelector("[data-review-receipt-message]");
+  const receiptProduct = document.querySelector("[data-review-receipt-product]");
+  const receiptName = document.querySelector("[data-review-receipt-name]");
+  const receiptDate = document.querySelector("[data-review-receipt-date]");
+  const receiptNote = document.querySelector("[data-review-receipt-note]");
   const formMode = form?.dataset.formMode === "review" ? "review" : "inquiry";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let currentLanguage = localStorage.getItem("momthebom-language") === "en" ? "en" : "ko";
   let submitState = "idle";
+  let submittedReview = null;
   let lastFocusedElement = null;
   let saveTimer = 0;
 
@@ -330,6 +360,39 @@
         ? messages.sent
         : messages.submit;
     submitButton.disabled = submitState === "sending";
+  };
+
+  const updateReviewReceipt = (dictionary) => {
+    if (!submittedReview || !reviewReceipt || !receiptRating || !receiptStars || !receiptScore || !receiptMessage || !receiptProduct || !receiptName || !receiptDate || !receiptNote) return;
+    const rating = Number.parseInt(submittedReview.rating, 10) || 0;
+    const ratingLabel = dictionary[`review_rating_${rating}`] || `${rating} / 5`;
+    const product = submittedReview.product === "산야초 건성 두피용 샴푸"
+      ? dictionary.review_product_dry
+      : submittedReview.product === "육미지황 지성 두피용 샴푸"
+        ? dictionary.review_product_oily
+        : submittedReview.product;
+    const locale = currentLanguage === "ko" ? "ko-KR" : "en-US";
+
+    receiptStars.textContent = `${"★".repeat(rating)}${"☆".repeat(Math.max(0, 5 - rating))}`;
+    receiptScore.textContent = `${rating} / 5`;
+    receiptRating.setAttribute("aria-label", ratingLabel);
+    receiptMessage.textContent = submittedReview.message;
+    receiptProduct.textContent = product;
+    receiptName.textContent = submittedReview.name;
+    receiptDate.textContent = new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric" }).format(submittedReview.submittedAt);
+    receiptNote.textContent = submittedReview.publicUsePermission
+      ? dictionary.review_receipt_permission_yes
+      : dictionary.review_receipt_permission_no;
+  };
+
+  const showReviewReceipt = (dictionary) => {
+    if (!reviewReceipt || !form) return;
+    updateReviewReceipt(dictionary);
+    form.hidden = true;
+    reviewReceipt.hidden = false;
+    window.requestAnimationFrame(() => reviewReceipt.classList.add("is-visible"));
+    reviewReceipt.focus({ preventScroll: true });
+    reviewReceipt.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
   };
 
   const setLanguage = (language) => {
@@ -373,6 +436,7 @@
     });
 
     updateFormState(dictionary);
+    updateReviewReceipt(dictionary);
 
     localStorage.setItem("momthebom-language", language);
   };
@@ -509,6 +573,16 @@
 
       const payload = new FormData(form);
       payload.set("_url", window.location.href);
+      const reviewSnapshot = formMode === "review"
+        ? {
+            product: String(payload.get("product") || ""),
+            name: String(payload.get("name") || ""),
+            rating: String(payload.get("rating") || ""),
+            message: String(payload.get("message") || ""),
+            publicUsePermission: payload.has("public_use_permission"),
+            submittedAt: new Date()
+          }
+        : null;
 
       try {
         const response = await fetch(form.action, {
@@ -523,6 +597,10 @@
         form.reset();
         sessionStorage.removeItem(draftKey);
         submitState = "sent";
+        if (reviewSnapshot) {
+          submittedReview = reviewSnapshot;
+          showReviewReceipt(dictionary);
+        }
       } catch {
         submitState = "error";
       }

@@ -180,6 +180,13 @@
 - 후기의 홈페이지·SNS 소개 동의는 선택 사항으로 분리한다.
 - QR은 pine/porcelain 색상과 넉넉한 quiet zone을 사용해 브랜드 톤과 스캔 안정성을 함께 지킨다.
 
+### Review Submission Receipt
+
+- 후기 전송 성공 시 입력 폼을 방금 작성한 내용을 담은 편집형 영수증 화면으로 교체한다.
+- 제품명, 평점, 후기 본문, 작성자, 작성일을 pine 표면 위에 선형으로 배치하고, 실제 공개 여부는 별도 검토 대상임을 명시한다.
+- 전환은 `opacity`, `transform`, `filter`만 사용하며 `prefers-reduced-motion`에서는 즉시 교체한다.
+- States: hidden, entering, visible. 전송 실패 시에는 폼과 임시 저장 내용을 그대로 유지한다.
+
 ## 7. Motion and Interaction
 
 - Enter: opacity 0 + translateY(24px)에서 700ms로 등장.

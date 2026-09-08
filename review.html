@@ -172,6 +172,45 @@
               </button>
             </div>
           </form>
+
+          <article class="review-receipt" data-review-receipt tabindex="-1" aria-labelledby="review-receipt-title" hidden>
+            <div class="review-receipt-topline">
+              <p class="eyebrow" data-i18n="review_receipt_kicker">YOUR NOTE, RECEIVED</p>
+              <p class="review-receipt-score" data-review-receipt-rating aria-label="평점 5점 만점">
+                <span data-review-receipt-stars aria-hidden="true">★★★★★</span>
+                <span data-review-receipt-score>5 / 5</span>
+              </p>
+            </div>
+            <div class="review-receipt-heading">
+              <h2 id="review-receipt-title" data-i18n-html="review_receipt_title">당신의 오늘이<br>잘 도착했습니다.</h2>
+              <p data-i18n="review_receipt_intro">남겨주신 이야기를 오래 읽고, 다음 기준에 세심하게 담겠습니다.</p>
+            </div>
+            <blockquote data-review-receipt-message></blockquote>
+            <dl class="review-receipt-details">
+              <div>
+                <dt data-i18n="review_receipt_product">사용한 제품</dt>
+                <dd data-review-receipt-product></dd>
+              </div>
+              <div>
+                <dt data-i18n="review_receipt_writer">작성자</dt>
+                <dd data-review-receipt-name></dd>
+              </div>
+              <div>
+                <dt data-i18n="review_receipt_date">도착한 날</dt>
+                <dd data-review-receipt-date></dd>
+              </div>
+            </dl>
+            <p class="review-receipt-note" data-review-receipt-note></p>
+            <div class="review-receipt-actions">
+              <a class="button button-light" href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="review_receipt_shop">제품 보러가기</span>
+                <span class="button-arrow" aria-hidden="true">→</span>
+              </a>
+              <a class="button button-ghost-light" href="index.html">
+                <span data-i18n="review_receipt_home">홈으로 돌아가기</span>
+              </a>
+            </div>
+          </article>
         </div>
       </section>
     </main>
