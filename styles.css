@@ -868,6 +868,81 @@ html[lang="en"] .lang-en {
   margin-top: 0;
 }
 
+.voices-heading {
+  align-items: end;
+}
+
+.voices-heading h2 {
+  max-width: 680px;
+}
+
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.voice-card {
+  display: flex;
+  min-height: 344px;
+  grid-column: span 6;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--porcelain);
+}
+
+.voice-card:nth-child(2),
+.voice-card:nth-child(3) {
+  background: var(--mist);
+}
+
+.voice-index {
+  color: var(--pine);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.voice-card blockquote {
+  margin: 40px 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.voice-card p {
+  margin: 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--stone);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.voices-action {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.voices-action p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--stone);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.voices-action .button {
+  flex: 0 0 auto;
+}
+
 .evidence-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -2186,8 +2261,14 @@ html[lang="en"] .lang-en {
   .origin-grid,
   .contact-grid,
   .product-review-grid,
-  .review-entry-grid {
+  .review-entry-grid,
+  .voices-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .voice-card {
+    min-height: 0;
+    grid-column: 1 / -1;
   }
 
   .display-xl {
@@ -2546,6 +2627,24 @@ html[lang="en"] .lang-en {
   .section-heading {
     grid-template-columns: 1fr;
     margin-bottom: 48px;
+  }
+
+  .voice-card {
+    padding: 32px 24px;
+  }
+
+  .voice-card blockquote {
+    margin: 32px 0;
+    font-size: 21px;
+  }
+
+  .voices-action {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .voices-action .button {
+    width: 100%;
   }
 
   .product-story {
