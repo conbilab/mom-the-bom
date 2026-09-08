@@ -14,9 +14,9 @@
     <meta property="og:image" content="assets/hero-morning.webp">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" as="image" href="assets/hero-morning.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260907a">
+    <link rel="stylesheet" href="styles.css?v=20260908a">
     <script>document.documentElement.classList.add("js")</script>
-    <script src="script.js?v=20260907a" defer></script>
+    <script src="script.js?v=20260908a" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">본문으로 바로가기</a>
@@ -31,7 +31,8 @@
         <nav class="desktop-nav" aria-label="주요 메뉴" data-i18n-label="primary_nav">
           <a href="#philosophy" data-i18n="nav_philosophy">철학</a>
           <a href="#wellness" data-i18n="nav_wellness">웰니스</a>
-          <a href="product.html" data-i18n="nav_product">모앤봄 산야초 샴푸</a>
+          <a href="product.html" data-i18n="nav_product">제품 보기</a>
+          <a href="review.html" data-i18n="nav_review">후기 남기기</a>
           <a href="#partners" data-i18n="nav_partners">파트너십</a>
         </nav>
 
@@ -39,7 +40,7 @@
           <button class="language-toggle" type="button" data-lang-toggle aria-label="영문으로 보기">
             <span data-lang-current>KR</span><span aria-hidden="true">/</span><span data-lang-next>EN</span>
           </button>
-          <a class="header-cta" href="#contact" data-i18n="nav_contact">제안하기</a>
+          <a class="header-cta" href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer" data-i18n="nav_shop">구매하기</a>
           <button class="menu-button" type="button" data-menu-open aria-label="메뉴 열기" data-i18n-label="menu_open" aria-expanded="false" aria-controls="mobile-menu">
             <span></span><span></span>
           </button>
@@ -57,14 +58,16 @@
         <nav class="mobile-nav" aria-label="모바일 주요 메뉴" data-i18n-label="mobile_nav">
           <a href="#philosophy"><span>01</span><strong data-i18n="nav_philosophy">철학</strong></a>
           <a href="#wellness"><span>02</span><strong data-i18n="nav_wellness">웰니스</strong></a>
-          <a href="product.html"><span>03</span><strong data-i18n="nav_product">모앤봄 산야초 샴푸</strong></a>
-          <a href="#partners"><span>04</span><strong data-i18n="nav_partners">파트너십</strong></a>
+          <a href="product.html"><span>03</span><strong data-i18n="nav_product">제품 보기</strong></a>
+          <a href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer"><span>04</span><strong data-i18n="nav_shop">구매하기</strong></a>
+          <a href="review.html"><span>05</span><strong data-i18n="nav_review">후기 남기기</strong></a>
+          <a href="#partners"><span>06</span><strong data-i18n="nav_partners">파트너십</strong></a>
         </nav>
         <div class="drawer-footer">
           <button class="language-toggle language-toggle-dark" type="button" data-lang-toggle aria-label="영문으로 보기">
             <span data-lang-current>KR</span><span aria-hidden="true">/</span><span data-lang-next>EN</span>
           </button>
-          <a class="button button-primary" href="#contact" data-i18n="partner_cta">파트너십 제안하기</a>
+          <a class="button button-primary" href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer" data-i18n="shop_all">두 제품 보러가기</a>
         </div>
       </aside>
     </div>
@@ -78,8 +81,8 @@
           <h1 id="hero-title" data-i18n-html="hero_title">몸을 더 바라볼수록,<br>삶은 더 좋아집니다.</h1>
           <p class="hero-copy" data-i18n="hero_copy">매일의 움직임, 영양, 마음, 그리고 몸에 닿는 것. 작은 관찰이 더 나은 생활의 기준이 됩니다.</p>
           <div class="hero-actions">
-            <a class="button button-light" href="#philosophy"><span data-i18n="hero_primary">몸 더 봄을 만나다</span><span class="button-arrow" aria-hidden="true">→</span></a>
-            <a class="button button-ghost-light" href="#partners"><span data-i18n="hero_secondary">PARTNER WITH US</span><span class="button-arrow" aria-hidden="true">→</span></a>
+            <a class="button button-light" href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer"><span data-i18n="hero_primary">제품 구매하기</span><span class="button-arrow" aria-hidden="true">→</span></a>
+            <a class="button button-ghost-light" href="review.html"><span data-i18n="hero_secondary">후기 남기기</span><span class="button-arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
         <a class="hero-scroll" href="#philosophy" aria-label="다음 섹션으로 이동" data-i18n-label="next_section"><span></span><span data-i18n="scroll">SCROLL</span></a>
@@ -152,9 +155,12 @@
         <div class="product-story-scrim" aria-hidden="true"></div>
         <div class="container product-story-content reveal">
           <p class="eyebrow eyebrow-light" data-i18n="product_kicker">BODY CARE 01 / DAILY HAIR RITUAL</p>
-          <h2 id="product-title" class="display-lg text-paper" data-i18n-html="product_title">철학은 제품으로<br><span class="keep-line">증명되어야 합니다.</span></h2>
-          <p class="product-story-copy" data-i18n="product_body">매일 닿는 샴푸일수록 향과 사용감, 확인 가능한 근거를 더 신중하게 보았습니다. 산야초 성분을 담은 모앤봄 데일리 샴푸는 몸 더 봄의 첫 생활 기준입니다.</p>
-          <a class="text-link text-paper" href="product.html"><span data-i18n="product_link">모앤봄 산야초 샴푸 자세히 보기</span><span aria-hidden="true">→</span></a>
+          <h2 id="product-title" class="display-lg text-paper" data-i18n-html="product_title">두피와 생활에 맞는<br><span class="keep-line">두 가지 기준.</span></h2>
+          <p class="product-story-copy" data-i18n="product_body">몸더봄 산야초 건성 두피용 샴푸와 몸더봄 육미지황 지성 두피용 샴푸. 두 제품을 한곳에서 비교하고 선택하세요.</p>
+          <div class="product-story-actions">
+            <a class="button button-light" href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer"><span data-i18n="shop_all">두 제품 보러가기</span><span class="button-arrow" aria-hidden="true">→</span></a>
+            <a class="text-link text-paper" href="product.html"><span data-i18n="product_link">산야초 샴푸 상세 보기</span><span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </section>
 
@@ -295,7 +301,9 @@
         <p data-i18n-html="footer_statement">몸을 더 바라보고,<br>삶을 더 잘 돌봅니다.</p>
         <nav aria-label="하단 메뉴" data-i18n-label="footer_nav">
           <a href="#philosophy" data-i18n="nav_philosophy">철학</a>
-          <a href="product.html" data-i18n="nav_product">모앤봄 산야초 샴푸</a>
+          <a href="product.html" data-i18n="nav_product">제품 보기</a>
+          <a href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer" data-i18n="nav_shop">구매하기</a>
+          <a href="review.html" data-i18n="nav_review">후기 남기기</a>
           <a href="#partners" data-i18n="nav_partners">파트너십</a>
           <a href="#contact" data-i18n="nav_contact">제안하기</a>
         </nav>
