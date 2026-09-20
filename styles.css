@@ -1740,17 +1740,18 @@ html[lang="en"] .lang-en {
 
 .ritual-steps h3 {
   margin: 72px 0 16px;
-  font-family: var(--font-display);
+  font-family: var(--font-text);
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
 }
 
 .ritual-steps p {
   max-width: 320px;
   margin: 0;
-  color: var(--stone);
+  color: var(--ink-soft);
   font-size: 14px;
+  font-weight: 400;
   line-height: 1.75;
 }
 
@@ -2668,6 +2669,22 @@ html[lang="en"] .lang-en {
   .ritual-heading {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .ritual-steps li {
+    padding-inline: 20px;
+  }
+
+  .ritual-steps li:first-child {
+    padding-left: 0;
+  }
+
+  .ritual-steps li:last-child {
+    padding-right: 0;
+  }
+
+  .ritual-steps h3 {
+    font-size: 20px;
   }
 }
 

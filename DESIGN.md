@@ -86,6 +86,7 @@
 
 - Display: `KoPub Batang`, `Batang`, `AppleMyungjo`, `Georgia`, serif. 선언과 브랜드 철학에 사용하며 운영체제의 로컬 서체로 안정적으로 폴백한다.
 - Text: `Pretendard`, `SUIT`, `Malgun Gothic`, `Arial`, sans-serif. 내비게이션, 본문, 폼, 데이터에 사용하며 외부 폰트 요청 없이 렌더링한다.
+- `Ritual Steps`처럼 24px 이하의 실용 정보 제목은 Windows에서 구형 명조 폴백이 거칠게 보이지 않도록 Text 서체를 600 굵기로 사용한다. Display 서체는 큰 선언과 브랜드 철학에만 사용한다.
 - 크기: 12 / 14 / 16 / 18 / 24 / 32 / 48 / 64 / 80px.
 - 모든 letter-spacing은 `0`.
 - 본문 line-height는 1.65, 긴 문장 너비는 70ch 이하.
@@ -156,6 +157,7 @@
 ### Ritual Steps
 
 - 제품 라벨의 용법·용량을 세 단계로 재구성한다: 충분히 적시기, 3~5 ml로 마사지하기, 깨끗이 헹구기.
+- 각 단계 제목은 Text 서체 600, 설명은 `--ink-soft`를 사용해 PC와 모바일에서 또렷하게 읽히게 한다.
 - 치료 루틴이나 임의의 대기 시간, 마사지 효과를 추가하지 않는다.
 
 ### Product Partnership CTA
