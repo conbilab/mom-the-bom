@@ -38,7 +38,7 @@
           <a href="index.html#wellness" data-i18n="nav_wellness">웰니스</a>
           <a href="product.html" data-i18n="nav_product">제품 보기</a>
           <a href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer" data-i18n="nav_shop">구매하기</a>
-          <a href="#review-form" aria-current="page"><span class="lang-ko">후기 작성</span><span class="lang-en">Review</span></a>
+          <a href="#public-reviews" aria-current="page"><span class="lang-ko">후기 확인하기</span><span class="lang-en">Reviews</span></a>
         </nav>
         <div class="header-actions">
           <button class="language-toggle" type="button" data-lang-toggle aria-label="영문으로 보기">
@@ -63,7 +63,7 @@
           <a href="index.html"><span>01</span><strong><span class="lang-ko">홈</span><span class="lang-en">Home</span></strong></a>
           <a href="product.html"><span>02</span><strong data-i18n="nav_product">제품 보기</strong></a>
           <a href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer"><span>03</span><strong data-i18n="nav_shop">구매하기</strong></a>
-          <a href="#review-form" aria-current="page"><span>04</span><strong data-i18n="nav_review">후기 남기기</strong></a>
+          <a href="#public-reviews" aria-current="page"><span>04</span><strong data-i18n="nav_review">후기 확인하기</strong></a>
           <a href="index.html#contact"><span>05</span><strong data-i18n="nav_contact">제안하기</strong></a>
         </nav>
         <div class="drawer-footer">
@@ -89,11 +89,72 @@
             <span class="lang-ko">솔직한 사용 경험이 몸 더 봄의 다음 기준을 만듭니다.</span>
             <span class="lang-en">Your honest experience helps shape the next MOM THE BOM standard.</span>
           </p>
-          <a class="button button-light" href="#review-form">
-            <span class="lang-ko">후기 작성하기</span>
-            <span class="lang-en">Write your review</span>
-            <span class="button-arrow" aria-hidden="true">→</span>
-          </a>
+          <div class="review-hero-actions">
+            <a class="button button-light" href="#review-form">
+              <span class="lang-ko">후기 남기기</span>
+              <span class="lang-en">Write a review</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="button button-ghost-light" href="#public-reviews">
+              <span class="lang-ko">모두의 후기 보기</span>
+              <span class="lang-en">Read public reviews</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="public-reviews" class="public-reviews section-paper" aria-labelledby="public-reviews-title">
+        <div class="container">
+          <header class="public-reviews-heading reveal">
+            <div>
+              <p class="eyebrow" data-i18n="public_reviews_kicker">OPEN REVIEW NOTEBOOK</p>
+              <h2 id="public-reviews-title" class="display-md" data-i18n-html="public_reviews_title">함께 써본 사람들의<br>열린 기록.</h2>
+            </div>
+            <div class="public-reviews-intro">
+              <p data-i18n="public_reviews_intro">QR로 들어온 누구나 후기를 남기고, 같은 자리에서 다른 사람의 경험을 읽을 수 있습니다.</p>
+              <p class="public-reviews-count" aria-live="polite"><strong data-review-count>4</strong><span data-i18n="public_reviews_count">개의 공개 후기</span></p>
+            </div>
+          </header>
+
+          <div class="public-review-status" data-public-review-status role="status" aria-live="polite" data-i18n="public_reviews_loading">최신 후기를 불러오는 중입니다.</div>
+          <div class="public-review-list" data-public-review-list>
+            <article class="public-review-item" data-seed-review>
+              <div class="public-review-meta">
+                <p class="public-review-stars" aria-label="평점 정보 없음"><span aria-hidden="true">실제 사용 후기</span></p>
+                <p><span class="lang-ko">40대 요가 강사 · 산야초</span><span class="lang-en">Yoga instructor in her 40s · San-Yacho</span></p>
+              </div>
+              <blockquote><span class="lang-ko">모앤봄 샴푸만 사용하고 린스를 사용하지 않아도 머릿결이 윤기 나고 부드러워져서 좋습니다. 앞으로 열심히 사용해보려고요.</span><span class="lang-en">I liked that my hair felt glossy and soft even when I used only Mo &amp; Bom shampoo without conditioner. I plan to keep using it.</span></blockquote>
+            </article>
+            <article class="public-review-item" data-seed-review>
+              <div class="public-review-meta">
+                <p class="public-review-stars" aria-label="평점 정보 없음"><span aria-hidden="true">실제 사용 후기</span></p>
+                <p><span class="lang-ko">40대 프리랜서 · 산야초</span><span class="lang-en">Freelancer in her 40s · San-Yacho</span></p>
+              </div>
+              <blockquote><span class="lang-ko">수영을 주 5일 하다 보니 머릿결이 뻣뻣했는데, 헤어팩을 하지 않고도 부드럽게 느껴져 바로 구매했어요. 제형이 조금 묽은 편인데도 거품이 풍성하게 납니다.</span><span class="lang-en">Swimming five days a week had left my hair feeling rough, but it felt soft even without a hair pack. The formula is light, yet it lathers generously.</span></blockquote>
+            </article>
+            <article class="public-review-item" data-seed-review>
+              <div class="public-review-meta">
+                <p class="public-review-stars" aria-label="평점 정보 없음"><span aria-hidden="true">실제 사용 후기</span></p>
+                <p><span class="lang-ko">20대 운동 강사 · 산야초</span><span class="lang-en">Fitness instructor in his 20s · San-Yacho</span></p>
+              </div>
+              <blockquote><span class="lang-ko">샴푸와 린스를 따로 쓰기 귀찮아하는 남자들에게 추천드려요. 이 제품을 써보니 머릿결이 상당히 좋아졌습니다.</span><span class="lang-en">I would recommend it to men who find using shampoo and conditioner separately inconvenient. My hair felt noticeably better after trying it.</span></blockquote>
+            </article>
+            <article class="public-review-item" data-seed-review>
+              <div class="public-review-meta">
+                <p class="public-review-stars" aria-label="평점 정보 없음"><span aria-hidden="true">실제 사용 후기</span></p>
+                <p><span class="lang-ko">30대 회사원 · 육미지황</span><span class="lang-en">Office worker in her 30s · Yukmijihwang</span></p>
+              </div>
+              <blockquote><span class="lang-ko">거품이 풍부하고 씻을 때 부드러운 크림을 씻어내는 느낌이었습니다. 샴푸 후 잔향이 오래가 헤어 퍼퓸을 쓴 것 같았고, 목욕 후 욕실에 남는 향도 좋았어요.</span><span class="lang-en">The lather was rich and rinsing felt like washing away a soft cream. The scent lingered like a hair perfume, and I liked the fragrance left in the bathroom afterward.</span></blockquote>
+            </article>
+          </div>
+
+          <div class="public-reviews-footer reveal">
+            <p data-i18n="public_reviews_note">공개 후기는 개인의 사용 경험이며 제품 효능을 보장하지 않습니다. 개인정보, 연락처, 링크와 질환·치료 표현은 게시할 수 없습니다.</p>
+            <a class="button button-primary" href="#review-form">
+              <span data-i18n="public_reviews_cta">내 후기도 남기기</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -111,11 +172,9 @@
             </p>
           </div>
 
-          <form class="review-form reveal" action="https://formsubmit.co/ajax/momthebom@naver.com" method="post" data-inquiry-form data-form-mode="review" novalidate>
-            <input type="hidden" name="_subject" value="[몸 더 봄] 새로운 모앤봄 사용 후기">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <form class="review-form reveal" action="/api/reviews" method="post" data-inquiry-form data-form-mode="review" novalidate>
+            <input class="form-honey" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="_started_at" value="">
             <div class="form-row">
               <div class="field">
                 <label for="review-product"><span class="lang-ko">사용한 제품 *</span><span class="lang-en">Product used *</span></label>
@@ -128,7 +187,7 @@
               </div>
               <div class="field">
                 <label for="review-name"><span class="lang-ko">이름 또는 닉네임 *</span><span class="lang-en">Name or nickname *</span></label>
-                <input id="review-name" name="name" autocomplete="nickname" required aria-describedby="review-name-error" placeholder="이름 또는 닉네임" data-i18n-placeholder="review_name_placeholder">
+                <input id="review-name" name="name" autocomplete="nickname" minlength="2" maxlength="24" required aria-describedby="review-name-error" placeholder="이름 또는 닉네임" data-i18n-placeholder="review_name_placeholder">
                 <p id="review-name-error" class="field-error" data-error-for="name" aria-live="polite"></p>
               </div>
             </div>
@@ -156,18 +215,19 @@
             </div>
             <div class="field">
               <label for="review-message"><span class="lang-ko">사용 후기 *</span><span class="lang-en">Your review *</span></label>
-              <textarea id="review-message" name="message" required aria-describedby="review-message-error" placeholder="향, 사용감, 생활 속 변화 등 솔직한 경험을 들려주세요." data-i18n-placeholder="review_message_placeholder"></textarea>
+              <textarea id="review-message" name="message" minlength="20" maxlength="500" required aria-describedby="review-message-error review-guideline" placeholder="향, 사용감, 생활 속 변화 등 솔직한 경험을 들려주세요." data-i18n-placeholder="review_message_placeholder"></textarea>
+              <p id="review-guideline" class="field-help" data-i18n="review_guideline">20~500자 · 개인정보, 연락처, 링크, 질환·치료 표현은 제외해 주세요.</p>
               <p id="review-message-error" class="field-error" data-error-for="message" aria-live="polite"></p>
             </div>
             <label class="review-permission">
-              <input type="checkbox" name="public_use_permission" value="동의">
-              <span class="lang-ko">작성한 후기를 몸 더 봄 홈페이지·SNS에 소개하는 데 동의합니다. (선택)</span>
-              <span class="lang-en">I agree that MOM THE BOM may feature this review on its website or social channels. (Optional)</span>
+              <input type="checkbox" name="public_use_permission" value="동의" required aria-describedby="review-permission-error">
+              <span data-i18n="review_public_consent">닉네임과 후기가 이 페이지에 공개되는 것에 동의하며, 개인정보나 연락처를 작성하지 않았음을 확인합니다. *</span>
             </label>
+            <p id="review-permission-error" class="field-error" data-error-for="public_use_permission" aria-live="polite"></p>
             <div class="form-submit">
-              <p class="form-status" data-form-status role="status" aria-live="polite">작성하신 후기는 몸 더 봄 공식 이메일로 전달됩니다.</p>
+              <p class="form-status" data-form-status role="status" aria-live="polite">등록한 후기는 이 페이지에 바로 공개됩니다.</p>
               <button class="button button-primary" type="submit" data-submit-button disabled>
-                <span data-submit-label>후기 보내기</span>
+                <span data-submit-label>공개 후기 등록하기</span>
                 <span class="button-arrow" aria-hidden="true">→</span>
               </button>
             </div>
@@ -206,8 +266,8 @@
                 <span data-i18n="review_receipt_shop">제품 보러가기</span>
                 <span class="button-arrow" aria-hidden="true">→</span>
               </a>
-              <a class="button button-ghost-light" href="index.html">
-                <span data-i18n="review_receipt_home">홈으로 돌아가기</span>
+              <a class="button button-ghost-light" href="#public-reviews">
+                <span data-i18n="review_receipt_home">공개 후기에서 보기</span>
               </a>
             </div>
           </article>
@@ -226,7 +286,7 @@
           <a href="index.html"><span class="lang-ko">홈</span><span class="lang-en">Home</span></a>
           <a href="product.html" data-i18n="nav_product">제품 보기</a>
           <a href="https://smartstore.naver.com/momthebom" target="_blank" rel="noopener noreferrer" data-i18n="nav_shop">구매하기</a>
-          <a href="review.html" aria-current="page"><span class="lang-ko">후기 작성</span><span class="lang-en">Review</span></a>
+          <a href="#public-reviews" aria-current="page"><span class="lang-ko">후기 확인하기</span><span class="lang-en">Reviews</span></a>
           <a href="index.html#contact" data-i18n="nav_contact">제안하기</a>
         </nav>
       </div>

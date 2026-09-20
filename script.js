@@ -22,7 +22,7 @@
       nav_wellness: "웰니스",
       nav_product: "제품 보기",
       nav_shop: "구매하기",
-      nav_review: "후기 남기기",
+      nav_review: "후기 확인하기",
       nav_partners: "파트너십",
       nav_contact: "제안하기",
       hero_kicker: "A WELLNESS STANDARD FROM KOREA",
@@ -117,24 +117,36 @@
       form_sent: "문의 전송 완료",
       form_success: "문의가 전송되었습니다. 확인 후 연락드리겠습니다.",
       form_error: "전송하지 못했습니다. 잠시 후 다시 시도하거나 전화로 연락해 주세요.",
-      review_form_ready: "작성하신 후기는 몸 더 봄 공식 이메일로 전달됩니다.",
-      review_form_submit: "후기 보내기",
-      review_form_sending: "보내는 중...",
-      review_form_sent: "후기 전송 완료",
-      review_form_success: "소중한 후기를 보내주셔서 감사합니다.",
-      review_form_error: "후기를 전송하지 못했습니다. 잠시 후 다시 시도해 주세요.",
+      public_reviews_kicker: "OPEN REVIEW NOTEBOOK",
+      public_reviews_title: "함께 써본 사람들의<br>열린 기록.",
+      public_reviews_intro: "QR로 들어온 누구나 후기를 남기고, 같은 자리에서 다른 사람의 경험을 읽을 수 있습니다.",
+      public_reviews_count: "개의 공개 후기",
+      public_reviews_loading: "최신 후기를 불러오는 중입니다.",
+      public_reviews_loaded: "최신 공개 후기를 불러왔습니다.",
+      public_reviews_empty: "아직 새로 등록된 후기가 없습니다. 첫 기록을 남겨주세요.",
+      public_reviews_error: "새 후기를 불러오지 못했습니다. 기존 후기는 계속 읽을 수 있습니다.",
+      public_reviews_note: "공개 후기는 개인의 사용 경험이며 제품 효능을 보장하지 않습니다. 개인정보, 연락처, 링크와 질환·치료 표현은 게시할 수 없습니다.",
+      public_reviews_cta: "내 후기도 남기기",
+      review_form_ready: "등록한 후기는 이 페이지에 바로 공개됩니다.",
+      review_form_submit: "공개 후기 등록하기",
+      review_form_sending: "등록하는 중...",
+      review_form_sent: "공개 후기 등록 완료",
+      review_form_success: "소중한 후기가 공개되었습니다.",
+      review_form_error: "후기를 등록하지 못했습니다. 잠시 후 다시 시도해 주세요.",
       review_receipt_kicker: "YOUR NOTE, RECEIVED",
       review_receipt_title: "당신의 오늘이<br>잘 도착했습니다.",
-      review_receipt_intro: "남겨주신 이야기를 오래 읽고, 다음 기준에 세심하게 담겠습니다.",
+      review_receipt_intro: "남겨주신 이야기가 공개 후기 공간에 안전하게 도착했습니다.",
       review_receipt_product: "사용한 제품",
       review_receipt_writer: "작성자",
       review_receipt_date: "도착한 날",
-      review_receipt_permission_yes: "홈페이지·SNS 소개에 동의해 주셨어요. 실제 게시는 몸 더 봄이 검토한 뒤 진행합니다.",
-      review_receipt_permission_no: "후기는 공식 이메일로 전달되었으며, 별도 동의 없이 홈페이지나 SNS에 공개되지 않습니다.",
+      review_receipt_permission_yes: "닉네임과 후기가 이 페이지의 공개 후기 목록에 게시되었습니다.",
+      review_receipt_permission_no: "공개 게시 동의를 확인하지 못했습니다.",
       review_receipt_shop: "제품 보러가기",
-      review_receipt_home: "홈으로 돌아가기",
+      review_receipt_home: "공개 후기에서 보기",
       review_name_placeholder: "이름 또는 닉네임",
       review_message_placeholder: "향, 사용감, 생활 속 변화 등 솔직한 경험을 들려주세요.",
+      review_guideline: "20~500자 · 개인정보, 연락처, 링크, 질환·치료 표현은 제외해 주세요.",
+      review_public_consent: "닉네임과 후기가 이 페이지에 공개되는 것에 동의하며, 개인정보나 연락처를 작성하지 않았음을 확인합니다. *",
       review_select: "선택해 주세요",
       review_product_dry: "산야초 건성 두피용 샴푸",
       review_product_oily: "육미지황 지성 두피용 샴푸",
@@ -148,8 +160,8 @@
       review_channel_offline: "오프라인 구매",
       review_channel_other: "기타",
       review_hero_alt: "밝은 공간에 놓인 몸 더 봄 샴푸 두 병",
-      review_qr_alt: "모앤봄 산야초 샴푸 후기 작성 QR 코드",
-      review_qr_label: "모앤봄 산야초 샴푸 후기 작성 페이지 열기",
+      review_qr_alt: "몸 더 봄 공개 후기 페이지 QR 코드",
+      review_qr_label: "몸 더 봄 공개 후기 확인 및 작성 페이지 열기",
       form_required: "필수 항목을 입력해 주세요.",
       form_email_error: "올바른 이메일 형식으로 입력해 주세요.",
       footer_statement: "몸을 더 바라보고,<br>삶을 더 잘 돌봅니다.",
@@ -183,7 +195,7 @@
       nav_wellness: "Wellness",
       nav_product: "Products",
       nav_shop: "Shop",
-      nav_review: "Write a review",
+      nav_review: "Reviews",
       nav_partners: "Partnership",
       nav_contact: "Contact",
       hero_kicker: "A WELLNESS STANDARD FROM KOREA",
@@ -278,24 +290,36 @@
       form_sent: "Inquiry sent",
       form_success: "Your inquiry has been sent. We will follow up after review.",
       form_error: "We could not send your inquiry. Please try again or call us.",
-      review_form_ready: "Your review will be delivered to the MOM THE BOM team.",
-      review_form_submit: "Send review",
-      review_form_sending: "Sending...",
-      review_form_sent: "Review sent",
-      review_form_success: "Thank you for sharing your experience.",
-      review_form_error: "We could not send your review. Please try again.",
+      public_reviews_kicker: "OPEN REVIEW NOTEBOOK",
+      public_reviews_title: "An open record from people<br>who use it every day.",
+      public_reviews_intro: "Anyone arriving by QR can leave a review and read other customers' experiences in the same place.",
+      public_reviews_count: " public reviews",
+      public_reviews_loading: "Loading the latest reviews.",
+      public_reviews_loaded: "The latest public reviews are ready.",
+      public_reviews_empty: "No new public reviews yet. Be the first to add one.",
+      public_reviews_error: "New reviews could not be loaded. The existing reviews remain available.",
+      public_reviews_note: "Public reviews describe individual experiences and do not guarantee product results. Personal details, contact information, links and medical claims are not allowed.",
+      public_reviews_cta: "Add my review",
+      review_form_ready: "Your review will appear publicly on this page after submission.",
+      review_form_submit: "Publish review",
+      review_form_sending: "Publishing...",
+      review_form_sent: "Review published",
+      review_form_success: "Thank you. Your review is now public.",
+      review_form_error: "We could not publish your review. Please try again.",
       review_receipt_kicker: "YOUR NOTE, RECEIVED",
       review_receipt_title: "Your everyday story<br>has arrived safely.",
-      review_receipt_intro: "We will read it closely and carry it thoughtfully into what comes next.",
+      review_receipt_intro: "Your story has arrived safely in the public review notebook.",
       review_receipt_product: "Product used",
       review_receipt_writer: "Written by",
       review_receipt_date: "Received on",
-      review_receipt_permission_yes: "You agreed that we may feature this review. MOM THE BOM will still review it before publishing.",
-      review_receipt_permission_no: "Your review was delivered by email and will not be published on our website or social channels without permission.",
+      review_receipt_permission_yes: "Your nickname and review are now visible in the public review list on this page.",
+      review_receipt_permission_no: "Public posting consent could not be confirmed.",
       review_receipt_shop: "Explore products",
-      review_receipt_home: "Return home",
+      review_receipt_home: "View in public reviews",
       review_name_placeholder: "Name or nickname",
       review_message_placeholder: "Tell us honestly about scent, feel and your everyday experience.",
+      review_guideline: "20–500 characters · Do not include personal details, contact information, links or medical claims.",
+      review_public_consent: "I consent to my nickname and review being public on this page and confirm that I have not included personal or contact information. *",
       review_select: "Please select",
       review_product_dry: "San-Yacho shampoo for dry scalps",
       review_product_oily: "Yukmijihwang shampoo for oily scalps",
@@ -309,8 +333,8 @@
       review_channel_offline: "In-store purchase",
       review_channel_other: "Other",
       review_hero_alt: "Two MOM THE BOM shampoo bottles in a bright space",
-      review_qr_alt: "QR code for writing a Mo & Bom Botanical Shampoo review",
-      review_qr_label: "Open the Mo & Bom Botanical Shampoo review page",
+      review_qr_alt: "QR code for the MOM THE BOM public review page",
+      review_qr_label: "Open the MOM THE BOM public review page to read or write reviews",
       form_required: "Please complete this required field.",
       form_email_error: "Please enter a valid email address.",
       footer_statement: "Look more closely at the body.<br>Care more thoughtfully for life.",
@@ -346,11 +370,17 @@
   const receiptName = document.querySelector("[data-review-receipt-name]");
   const receiptDate = document.querySelector("[data-review-receipt-date]");
   const receiptNote = document.querySelector("[data-review-receipt-note]");
+  const publicReviewList = document.querySelector("[data-public-review-list]");
+  const publicReviewStatus = document.querySelector("[data-public-review-status]");
+  const publicReviewCount = document.querySelector("[data-review-count]");
   const formMode = form?.dataset.formMode === "review" ? "review" : "inquiry";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let currentLanguage = localStorage.getItem("momthebom-language") === "en" ? "en" : "ko";
   let submitState = "idle";
+  let submitErrorMessage = "";
   let submittedReview = null;
+  let publicReviews = [];
+  let publicReviewState = "loading";
   let lastFocusedElement = null;
   let saveTimer = 0;
 
@@ -378,7 +408,7 @@
     status.textContent = submitState === "sent"
       ? messages.success
       : submitState === "error"
-        ? messages.error
+        ? submitErrorMessage || messages.error
         : messages.ready;
     submitLabel.textContent = submitState === "sending"
       ? messages.sending
@@ -419,6 +449,98 @@
     window.requestAnimationFrame(() => reviewReceipt.classList.add("is-visible"));
     reviewReceipt.focus({ preventScroll: true });
     reviewReceipt.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+  };
+
+  const getProductLabel = (review, dictionary) => review.product === "산야초 건성 두피용 샴푸"
+    ? dictionary.review_product_dry
+    : review.product === "육미지황 지성 두피용 샴푸"
+      ? dictionary.review_product_oily
+      : review.product;
+
+  const getChannelLabel = (channel, dictionary) => ({
+    gift: dictionary.review_channel_gift,
+    online: dictionary.review_channel_online,
+    offline: dictionary.review_channel_offline,
+    other: dictionary.review_channel_other
+  })[channel] || "";
+
+  const createPublicReview = (review, dictionary) => {
+    const article = document.createElement("article");
+    article.className = "public-review-item public-review-item-live";
+    article.dataset.apiReview = review.id;
+    article.tabIndex = -1;
+
+    const meta = document.createElement("div");
+    meta.className = "public-review-meta";
+
+    const score = document.createElement("p");
+    score.className = "public-review-stars";
+    const rating = Math.min(5, Math.max(1, Number.parseInt(review.rating, 10) || 1));
+    score.setAttribute("aria-label", `${rating} / 5`);
+    const stars = document.createElement("span");
+    stars.setAttribute("aria-hidden", "true");
+    stars.textContent = `${"★".repeat(rating)}${"☆".repeat(5 - rating)}`;
+    const scoreText = document.createElement("strong");
+    scoreText.textContent = `${rating} / 5`;
+    score.append(stars, scoreText);
+
+    const byline = document.createElement("p");
+    const locale = currentLanguage === "ko" ? "ko-KR" : "en-US";
+    const parsedDate = new Date(review.createdAt);
+    const date = Number.isNaN(parsedDate.valueOf())
+      ? ""
+      : new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "numeric" }).format(parsedDate);
+    const details = [review.name, getProductLabel(review, dictionary), getChannelLabel(review.channel, dictionary), date].filter(Boolean);
+    byline.textContent = details.join(" · ");
+
+    const quote = document.createElement("blockquote");
+    quote.textContent = review.message;
+    meta.append(score, byline);
+    article.append(meta, quote);
+    return article;
+  };
+
+  const updatePublicReviewStatus = (dictionary) => {
+    if (!publicReviewStatus) return;
+    const statusKey = publicReviewState === "error"
+      ? "public_reviews_error"
+      : publicReviewState === "loaded" && publicReviews.length === 0
+        ? "public_reviews_empty"
+        : publicReviewState === "loaded"
+          ? "public_reviews_loaded"
+          : "public_reviews_loading";
+    publicReviewStatus.textContent = dictionary[statusKey];
+    publicReviewStatus.classList.toggle("is-error", publicReviewState === "error");
+  };
+
+  const renderPublicReviews = (dictionary) => {
+    if (!publicReviewList) return;
+    publicReviewList.querySelectorAll("[data-api-review]").forEach((item) => item.remove());
+    const fragment = document.createDocumentFragment();
+    publicReviews.forEach((review) => fragment.append(createPublicReview(review, dictionary)));
+    publicReviewList.insertBefore(fragment, publicReviewList.firstChild);
+    if (publicReviewCount) {
+      const seedCount = publicReviewList.querySelectorAll("[data-seed-review]").length;
+      publicReviewCount.textContent = String(seedCount + publicReviews.length);
+    }
+    updatePublicReviewStatus(dictionary);
+  };
+
+  const loadPublicReviews = async () => {
+    if (!publicReviewList) return;
+    publicReviewState = "loading";
+    updatePublicReviewStatus(copy[currentLanguage]);
+    try {
+      const response = await fetch("/api/reviews", { headers: { Accept: "application/json" } });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !Array.isArray(result.reviews)) throw new Error("Review load failed");
+      publicReviews = result.reviews;
+      publicReviewState = "loaded";
+    } catch {
+      publicReviews = [];
+      publicReviewState = "error";
+    }
+    renderPublicReviews(copy[currentLanguage]);
   };
 
   const setLanguage = (language) => {
@@ -463,6 +585,7 @@
 
     updateFormState(dictionary);
     updateReviewReceipt(dictionary);
+    renderPublicReviews(dictionary);
 
     localStorage.setItem("momthebom-language", language);
   };
@@ -545,7 +668,12 @@
   const draftKey = `momthebom-${formMode}-draft`;
   const saveDraft = () => {
     if (!form) return;
-    const data = Object.fromEntries([...new FormData(form).entries()].filter(([name]) => !name.startsWith("_")));
+    const data = {};
+    [...form.elements].forEach((field) => {
+      if (!(field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement)) return;
+      if (!field.name || field.name.startsWith("_")) return;
+      data[field.name] = field instanceof HTMLInputElement && field.type === "checkbox" ? field.checked : field.value;
+    });
     sessionStorage.setItem(draftKey, JSON.stringify(data));
   };
 
@@ -556,17 +684,21 @@
         Object.entries(savedDraft).forEach(([name, value]) => {
           const field = form.elements.namedItem(name);
           if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
-            field.value = String(value);
+            if (field instanceof HTMLInputElement && field.type === "checkbox") field.checked = value === true;
+            else field.value = String(value);
           }
         });
       }
     } catch {
       sessionStorage.removeItem(draftKey);
     }
+    const startedAtField = form.elements.namedItem("_started_at");
+    if (startedAtField instanceof HTMLInputElement) startedAtField.value = String(Date.now());
 
     form.addEventListener("input", () => {
       if (submitState === "sent" || submitState === "error") {
         submitState = "idle";
+        submitErrorMessage = "";
         updateFormState(copy[currentLanguage]);
       }
       window.clearTimeout(saveTimer);
@@ -581,7 +713,9 @@
       form.querySelectorAll("[required]").forEach((field) => {
         const error = form.querySelector(`[data-error-for="${field.name}"]`);
         let message = "";
-        if (!field.value.trim()) message = dictionary.form_required;
+        if (field instanceof HTMLInputElement && field.type === "checkbox" && !field.checked) message = dictionary.form_required;
+        else if (!field.value.trim()) message = dictionary.form_required;
+        else if (!field.validity.valid) message = dictionary.form_required;
         if (field.name === "email" && field.value.trim() && !field.validity.valid) message = dictionary.form_email_error;
         field.setAttribute("aria-invalid", message ? "true" : "false");
         if (error) error.textContent = message;
@@ -595,10 +729,10 @@
       }
 
       submitState = "sending";
+      submitErrorMessage = "";
       updateFormState(dictionary);
 
       const payload = new FormData(form);
-      payload.set("_url", window.location.href);
       const reviewSnapshot = formMode === "review"
         ? {
             product: String(payload.get("product") || ""),
@@ -611,20 +745,50 @@
         : null;
 
       try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          headers: {
-            Accept: "application/json"
-          },
-          body: payload
-        });
+        if (formMode !== "review") payload.set("_url", window.location.href);
+        const response = await fetch(form.action, formMode === "review"
+          ? {
+              method: "POST",
+              headers: { Accept: "application/json", "Content-Type": "application/json" },
+              body: JSON.stringify({
+                product: reviewSnapshot.product,
+                name: reviewSnapshot.name,
+                rating: reviewSnapshot.rating,
+                channel: String(payload.get("channel") || ""),
+                message: reviewSnapshot.message,
+                publicUsePermission: reviewSnapshot.publicUsePermission,
+                website: String(payload.get("website") || ""),
+                startedAt: Number(payload.get("_started_at") || 0)
+              })
+            }
+          : {
+              method: "POST",
+              headers: { Accept: "application/json" },
+              body: payload
+            });
         const result = await response.json().catch(() => ({}));
-        if (!response.ok || result.success === false || result.success === "false") throw new Error("Submission failed");
+        if (!response.ok || result.success === false || result.success === "false") {
+          submitErrorMessage = typeof result.error === "string" ? result.error : "";
+          throw new Error("Submission failed");
+        }
         form.reset();
         sessionStorage.removeItem(draftKey);
         submitState = "sent";
         if (reviewSnapshot) {
-          submittedReview = reviewSnapshot;
+          const publishedReview = result.review || {
+            ...reviewSnapshot,
+            id: `local-${Date.now()}`,
+            channel: String(payload.get("channel") || ""),
+            createdAt: new Date().toISOString()
+          };
+          submittedReview = {
+            ...publishedReview,
+            publicUsePermission: true,
+            submittedAt: new Date(publishedReview.createdAt)
+          };
+          publicReviews = [publishedReview, ...publicReviews.filter((review) => review.id !== publishedReview.id)];
+          publicReviewState = "loaded";
+          renderPublicReviews(dictionary);
           showReviewReceipt(dictionary);
         }
       } catch {
@@ -642,4 +806,5 @@
   });
 
   setLanguage(currentLanguage);
+  loadPublicReviews();
 })();
