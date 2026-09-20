@@ -451,6 +451,17 @@
     reviewReceipt.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
   };
 
+  const solveReviewProof = async (startedAt, challenge) => {
+    const encoder = new TextEncoder();
+    for (let nonce = 0; nonce <= 9999999; nonce += 1) {
+      const digest = await crypto.subtle.digest("SHA-256", encoder.encode(`${startedAt}:${challenge}:${nonce}`));
+      const bytes = new Uint8Array(digest);
+      if (bytes[0] === 0 && (bytes[1] & 0xc0) === 0) return String(nonce);
+      if (nonce > 0 && nonce % 1024 === 0) await new Promise(requestAnimationFrame);
+    }
+    throw new Error("Proof generation failed");
+  };
+
   const getProductLabel = (review, dictionary) => review.product === "산야초 건성 두피용 샴푸"
     ? dictionary.review_product_dry
     : review.product === "육미지황 지성 두피용 샴푸"
@@ -694,6 +705,8 @@
     }
     const startedAtField = form.elements.namedItem("_started_at");
     if (startedAtField instanceof HTMLInputElement) startedAtField.value = String(Date.now());
+    const challengeField = form.elements.namedItem("_challenge");
+    if (challengeField instanceof HTMLInputElement) challengeField.value = crypto.randomUUID();
 
     form.addEventListener("input", () => {
       if (submitState === "sent" || submitState === "error") {
@@ -746,6 +759,9 @@
 
       try {
         if (formMode !== "review") payload.set("_url", window.location.href);
+        const proofNonce = formMode === "review"
+          ? await solveReviewProof(Number(payload.get("_started_at") || 0), String(payload.get("_challenge") || ""))
+          : "";
         const response = await fetch(form.action, formMode === "review"
           ? {
               method: "POST",
@@ -758,7 +774,9 @@
                 message: reviewSnapshot.message,
                 publicUsePermission: reviewSnapshot.publicUsePermission,
                 website: String(payload.get("website") || ""),
-                startedAt: Number(payload.get("_started_at") || 0)
+                startedAt: Number(payload.get("_started_at") || 0),
+                challenge: String(payload.get("_challenge") || ""),
+                proofNonce
               })
             }
           : {

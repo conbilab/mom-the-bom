@@ -1,4 +1,4 @@
-import { list, put } from "@vercel/blob";
+import { del, list, put } from "@vercel/blob";
 
 const PRODUCTS = new Set([
   "산야초 건성 두피용 샴푸",
@@ -6,6 +6,8 @@ const PRODUCTS = new Set([
 ]);
 const CHANNELS = new Set(["", "gift", "online", "offline", "other"]);
 const PUBLIC_FIELDS = ["id", "product", "name", "rating", "channel", "message", "createdAt"];
+const RATE_LIMIT_WINDOW = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 3;
 const FORBIDDEN_CONTENT = [
   /https?:\/\//iu,
   /www\./iu,
@@ -25,6 +27,49 @@ const json = (data, init = {}) => Response.json(data, {
 });
 
 const clean = (value) => String(value || "").replace(/\s+/gu, " ").trim();
+
+const digestHex = async (value) => {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+};
+
+const verifySubmissionProof = async ({ startedAt, challenge, proofNonce }) => {
+  if (!/^[0-9a-f-]{36}$/iu.test(challenge) || !/^\d{1,7}$/u.test(proofNonce)) return false;
+  const proof = await digestHex(`${startedAt}:${challenge}:${proofNonce}`);
+  return proof.startsWith("00") && Number.parseInt(proof[2], 16) < 4;
+};
+
+const enforceRateLimit = async (request) => {
+  const forwardedFor = request.headers.get("x-vercel-forwarded-for")
+    || request.headers.get("x-forwarded-for")
+    || request.headers.get("x-real-ip")
+    || "unknown";
+  const clientAddress = forwardedFor.split(",")[0].trim();
+  const clientHash = await digestHex(`momthebom-review:${clientAddress}`);
+  const prefix = `review-rate/${clientHash}/`;
+  const now = Date.now();
+  const { blobs } = await list({ prefix, limit: 100 });
+  const recent = [];
+  const stale = [];
+
+  blobs.forEach((blob) => {
+    const match = blob.pathname.match(/\/(\d+)-/u);
+    const createdAt = match ? Number(match[1]) : 0;
+    if (createdAt > now - RATE_LIMIT_WINDOW) recent.push(blob);
+    else stale.push(blob.url);
+  });
+
+  if (stale.length) await del(stale);
+  if (recent.length >= RATE_LIMIT_MAX) return false;
+
+  await put(`${prefix}${now}-${crypto.randomUUID()}.json`, JSON.stringify({ createdAt: new Date(now).toISOString() }), {
+    access: "public",
+    addRandomSuffix: false,
+    contentType: "application/json",
+    cacheControlMaxAge: 60
+  });
+  return true;
+};
 
 const isStoredReview = (review) => review
   && typeof review.id === "string"
@@ -97,6 +142,11 @@ export async function POST(request) {
   if (!Number.isFinite(startedAt) || writingTime < 3000 || writingTime > 86400000) {
     return json({ error: "페이지를 새로고침한 뒤 천천히 후기를 작성해 주세요." }, { status: 400 });
   }
+  const challenge = clean(body.challenge);
+  const proofNonce = clean(body.proofNonce);
+  if (!await verifySubmissionProof({ startedAt, challenge, proofNonce })) {
+    return json({ error: "자동 등록 방지 확인에 실패했습니다. 페이지를 새로고침해 주세요." }, { status: 400 });
+  }
 
   const review = {
     id: crypto.randomUUID(),
@@ -131,6 +181,9 @@ export async function POST(request) {
   }
 
   try {
+    if (!await enforceRateLimit(request)) {
+      return json({ error: "후기는 10분에 3개까지 등록할 수 있습니다. 잠시 후 다시 시도해 주세요." }, { status: 429 });
+    }
     const newestFirst = String(9999999999999 - Date.now()).padStart(13, "0");
     await put(`reviews/${newestFirst}-${review.id}.json`, JSON.stringify(review), {
       access: "public",
