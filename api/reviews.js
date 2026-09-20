@@ -88,24 +88,28 @@ const publicReview = (review) => Object.fromEntries(
   PUBLIC_FIELDS.map((field) => [field, review[field]])
 );
 
-const readReviews = async () => {
-  const { blobs } = await list({ prefix: "reviews/", limit: 100 });
+const readReviews = async (cursor) => {
+  const page = await list({ prefix: "reviews/", limit: 12, ...(cursor ? { cursor } : {}) });
+  const { blobs } = page;
   const reviews = await Promise.all(blobs.map(async (blob) => {
     const response = await fetch(blob.url, { cache: "no-store" });
     if (!response.ok) return null;
     return response.json().catch(() => null);
   }));
-  return reviews
-    .filter(isStoredReview)
-    .map(publicReview)
-    .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
-    .slice(0, 48);
+  return {
+    reviews: reviews
+      .filter(isStoredReview)
+      .map(publicReview)
+      .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)),
+    cursor: page.hasMore ? page.cursor : null
+  };
 };
 
-export async function GET() {
+export async function GET(request) {
   try {
-    const reviews = await readReviews();
-    return json({ reviews });
+    const cursor = clean(new URL(request.url).searchParams.get("cursor"));
+    if (cursor.length > 2048) return json({ error: "올바른 요청이 아닙니다." }, { status: 400 });
+    return json(await readReviews(cursor));
   } catch (error) {
     console.error("Unable to load reviews", error);
     return json({ error: "후기를 불러오지 못했습니다." }, { status: 503 });

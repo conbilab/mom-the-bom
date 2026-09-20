@@ -123,8 +123,10 @@
       public_reviews_count: "개의 공개 후기",
       public_reviews_loading: "최신 후기를 불러오는 중입니다.",
       public_reviews_loaded: "최신 공개 후기를 불러왔습니다.",
-      public_reviews_empty: "아직 새로 등록된 후기가 없습니다. 첫 기록을 남겨주세요.",
+      public_reviews_empty: "공개 후기 목록을 확인할 수 있습니다.",
       public_reviews_error: "새 후기를 불러오지 못했습니다. 기존 후기는 계속 읽을 수 있습니다.",
+      public_reviews_more: "후기 더 보기",
+      public_reviews_more_loading: "후기 불러오는 중",
       public_reviews_note: "공개 후기는 개인의 사용 경험이며 제품 효능을 보장하지 않습니다. 개인정보, 연락처, 링크와 질환·치료 표현은 게시할 수 없습니다.",
       public_reviews_cta: "내 후기도 남기기",
       review_form_ready: "등록한 후기는 이 페이지에 바로 공개됩니다.",
@@ -296,8 +298,10 @@
       public_reviews_count: " public reviews",
       public_reviews_loading: "Loading the latest reviews.",
       public_reviews_loaded: "The latest public reviews are ready.",
-      public_reviews_empty: "No new public reviews yet. Be the first to add one.",
+      public_reviews_empty: "Public reviews are ready to read.",
       public_reviews_error: "New reviews could not be loaded. The existing reviews remain available.",
+      public_reviews_more: "Load more reviews",
+      public_reviews_more_loading: "Loading reviews",
       public_reviews_note: "Public reviews describe individual experiences and do not guarantee product results. Personal details, contact information, links and medical claims are not allowed.",
       public_reviews_cta: "Add my review",
       review_form_ready: "Your review will appear publicly on this page after submission.",
@@ -373,6 +377,8 @@
   const publicReviewList = document.querySelector("[data-public-review-list]");
   const publicReviewStatus = document.querySelector("[data-public-review-status]");
   const publicReviewCount = document.querySelector("[data-review-count]");
+  const publicReviewsPagination = document.querySelector("[data-public-reviews-pagination]");
+  const publicReviewsMore = document.querySelector("[data-public-reviews-more]");
   const formMode = form?.dataset.formMode === "review" ? "review" : "inquiry";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let currentLanguage = localStorage.getItem("momthebom-language") === "en" ? "en" : "ko";
@@ -381,6 +387,8 @@
   let submittedReview = null;
   let publicReviews = [];
   let publicReviewState = "loading";
+  let publicReviewsCursor = "";
+  let publicReviewsLoadingMore = false;
   let lastFocusedElement = null;
   let saveTimer = 0;
 
@@ -495,18 +503,22 @@
     scoreText.textContent = `${rating} / 5`;
     score.append(stars, scoreText);
 
-    const byline = document.createElement("p");
+    const writer = document.createElement("p");
+    writer.className = "public-review-writer";
+    writer.textContent = review.name;
+    const detailsLine = document.createElement("p");
+    detailsLine.className = "public-review-details";
     const locale = currentLanguage === "ko" ? "ko-KR" : "en-US";
     const parsedDate = new Date(review.createdAt);
     const date = Number.isNaN(parsedDate.valueOf())
       ? ""
       : new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "numeric" }).format(parsedDate);
-    const details = [review.name, getProductLabel(review, dictionary), getChannelLabel(review.channel, dictionary), date].filter(Boolean);
-    byline.textContent = details.join(" · ");
+    const details = [getProductLabel(review, dictionary), getChannelLabel(review.channel, dictionary), date].filter(Boolean);
+    detailsLine.textContent = details.join(" · ");
 
     const quote = document.createElement("blockquote");
     quote.textContent = review.message;
-    meta.append(score, byline);
+    meta.append(score, writer, detailsLine);
     article.append(meta, quote);
     return article;
   };
@@ -534,23 +546,38 @@
       const seedCount = publicReviewList.querySelectorAll("[data-seed-review]").length;
       publicReviewCount.textContent = String(seedCount + publicReviews.length);
     }
+    if (publicReviewsPagination && publicReviewsMore) {
+      publicReviewsPagination.hidden = !publicReviewsCursor;
+      publicReviewsMore.disabled = publicReviewsLoadingMore;
+      const label = publicReviewsMore.querySelector("span");
+      if (label) label.textContent = dictionary[publicReviewsLoadingMore ? "public_reviews_more_loading" : "public_reviews_more"];
+    }
     updatePublicReviewStatus(dictionary);
   };
 
-  const loadPublicReviews = async () => {
+  const loadPublicReviews = async ({ append = false } = {}) => {
     if (!publicReviewList) return;
-    publicReviewState = "loading";
+    publicReviewState = append ? publicReviewState : "loading";
+    publicReviewsLoadingMore = append;
     updatePublicReviewStatus(copy[currentLanguage]);
+    renderPublicReviews(copy[currentLanguage]);
     try {
-      const response = await fetch("/api/reviews", { headers: { Accept: "application/json" } });
+      const endpoint = publicReviewsCursor && append
+        ? `/api/reviews?cursor=${encodeURIComponent(publicReviewsCursor)}`
+        : "/api/reviews";
+      const response = await fetch(endpoint, { headers: { Accept: "application/json" } });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !Array.isArray(result.reviews)) throw new Error("Review load failed");
-      publicReviews = result.reviews;
+      publicReviews = append
+        ? [...publicReviews, ...result.reviews.filter((next) => !publicReviews.some((current) => current.id === next.id))]
+        : result.reviews;
+      publicReviewsCursor = typeof result.cursor === "string" ? result.cursor : "";
       publicReviewState = "loaded";
     } catch {
-      publicReviews = [];
+      if (!append) publicReviews = [];
       publicReviewState = "error";
     }
+    publicReviewsLoadingMore = false;
     renderPublicReviews(copy[currentLanguage]);
   };
 
@@ -821,6 +848,10 @@
 
   document.querySelectorAll("[data-year]").forEach((element) => {
     element.textContent = String(new Date().getFullYear());
+  });
+
+  publicReviewsMore?.addEventListener("click", () => {
+    if (!publicReviewsLoadingMore && publicReviewsCursor) loadPublicReviews({ append: true });
   });
 
   setLanguage(currentLanguage);
