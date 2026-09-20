@@ -1,4 +1,4 @@
-import { del, list, put } from "@vercel/blob";
+import { BlobPreconditionFailedError, del, list, put } from "@vercel/blob";
 
 const PRODUCTS = new Set([
   "산야초 건성 두피용 샴푸",
@@ -39,36 +39,33 @@ const verifySubmissionProof = async ({ startedAt, challenge, proofNonce }) => {
   return proof.startsWith("00") && Number.parseInt(proof[2], 16) < 4;
 };
 
-const enforceRateLimit = async (request) => {
+const claimRateLimitSlot = async (request) => {
   const forwardedFor = request.headers.get("x-vercel-forwarded-for")
     || request.headers.get("x-forwarded-for")
     || request.headers.get("x-real-ip")
     || "unknown";
   const clientAddress = forwardedFor.split(",")[0].trim();
   const clientHash = await digestHex(`momthebom-review:${clientAddress}`);
-  const prefix = `review-rate/${clientHash}/`;
   const now = Date.now();
-  const { blobs } = await list({ prefix, limit: 100 });
-  const recent = [];
-  const stale = [];
+  const windowId = Math.floor(now / RATE_LIMIT_WINDOW);
 
-  blobs.forEach((blob) => {
-    const match = blob.pathname.match(/\/(\d+)-/u);
-    const createdAt = match ? Number(match[1]) : 0;
-    if (createdAt > now - RATE_LIMIT_WINDOW) recent.push(blob);
-    else stale.push(blob.url);
-  });
+  for (let slot = 0; slot < RATE_LIMIT_MAX; slot += 1) {
+    try {
+      return await put(`review-rate/${clientHash}/${windowId}-${slot}.json`, JSON.stringify({
+        createdAt: new Date(now).toISOString()
+      }), {
+        access: "public",
+        addRandomSuffix: false,
+        allowOverwrite: false,
+        contentType: "application/json",
+        cacheControlMaxAge: 60
+      });
+    } catch (error) {
+      if (!(error instanceof BlobPreconditionFailedError)) throw error;
+    }
+  }
 
-  if (stale.length) await del(stale);
-  if (recent.length >= RATE_LIMIT_MAX) return false;
-
-  await put(`${prefix}${now}-${crypto.randomUUID()}.json`, JSON.stringify({ createdAt: new Date(now).toISOString() }), {
-    access: "public",
-    addRandomSuffix: false,
-    contentType: "application/json",
-    cacheControlMaxAge: 60
-  });
-  return true;
+  return null;
 };
 
 const isStoredReview = (review) => review
@@ -181,16 +178,22 @@ export async function POST(request) {
   }
 
   try {
-    if (!await enforceRateLimit(request)) {
+    const rateLimitSlot = await claimRateLimitSlot(request);
+    if (!rateLimitSlot) {
       return json({ error: "후기는 10분에 3개까지 등록할 수 있습니다. 잠시 후 다시 시도해 주세요." }, { status: 429 });
     }
     const newestFirst = String(9999999999999 - Date.now()).padStart(13, "0");
-    await put(`reviews/${newestFirst}-${review.id}.json`, JSON.stringify(review), {
-      access: "public",
-      addRandomSuffix: false,
-      contentType: "application/json",
-      cacheControlMaxAge: 60
-    });
+    try {
+      await put(`reviews/${newestFirst}-${review.id}.json`, JSON.stringify(review), {
+        access: "public",
+        addRandomSuffix: false,
+        contentType: "application/json",
+        cacheControlMaxAge: 60
+      });
+    } catch (error) {
+      await del(rateLimitSlot.url).catch((cleanupError) => console.error("Unable to release review rate limit slot", cleanupError));
+      throw error;
+    }
     return json({ review: publicReview(review) }, { status: 201 });
   } catch (error) {
     console.error("Unable to save review", error);
